@@ -1,37 +1,31 @@
-# Neural Network for Cancer Diagnosis
+**README**
 
-## Opis
-Ten notatnik Jupyter (`neural_network_cancer.ipynb`) zawiera implementację i trening modelu sieci neuronowej służącego do diagnozowania raka. Został zbudowany przy użyciu PyTorch i innych narzędzi analizy danych.
+## Przewidywanie Diagnozy Nowotworowej za Pomocą Sieci Neuronowych
 
-## Zawartość
-- **Importowanie bibliotek**: Używa PyTorch, Pandas, scikit-learn i Matplotlib.
-- **Definicja modelu**: Zawiera klasę `Model2` z architekturą sieci neuronowej.
-- **Przygotowanie danych**: Ładuje i przetwarza zbiór danych dotyczący raka.
-- **Trening modelu**: Trenuje model na danych, zapisuje straty i dokładność.
-- **Wizualizacja wyników**: Pokazuje wykresy dokładności i strat w trakcie treningu.
-- **Ocena modelu**: Testuje model na danych testowych i oblicza końcowe metryki.
+### Przegląd
+Implemetacja modelu sieci neuronowej do przewidywania diagnozy nowotworowej na podstawie cech wejściowych. Model jest trenowany przy użyciu zbioru danych `cancer.csv`, gdzie każdy wiersz reprezentuje pacjenta z różnymi cechami związanymi z diagnozą nowotworu.
 
-## Technologie
-- Python
-- PyTorch
-- Pandas
-- Matplotlib
-- scikit-learn
+### Architektura Modelu
+Model sieci neuronowej używany w tym kodzie składa się z:
+- Warstwy wejściowej z 30 cechami
+- Dwóch warstw ukrytych, każda z 8 neuronami
+- Warstwy wyjściowej z 2 neuronami (do klasyfikacji binarnej: złośliwy lub łagodny)
 
-## Architektura modelu
-- **Warstwa wejściowa**
-- **2 warstwy ukryte**
-- **Warstwa wyjściowa**
+### Użyte Biblioteki
+- `torch` i `torch.nn`: Do budowania i trenowania modeli sieci neuronowej.
+- `pandas`: Do manipulacji i przetwarzania danych.
+- `sklearn.model_selection`: Do podziału zestawu danych na zestawy treningowy i testowy.
+- `matplotlib.pyplot`: Do wizualizacji postępów w treningu.
 
-## Wyniki
-- Wykresy dokładności i strat w trakcie treningu.
-- Ocena końcowa na zestawie testowym (straty i dokładność).
+### Trening Modelu
+- **Funkcja Straty**: CrossEntropyLoss
+- **Optymalizator**: Optymalizator Adam z współczynnikiem uczenia 0.001
+- **Epoki**: 5000
 
-## Użycie
-1. Załaduj notatnik w środowisku Jupyter.
-2. Uruchom komórki według kolejności.
-3. Analizuj wyniki i wykresy wygenerowane w sekcji wizualizacji.
+Podczas treningu monitorowane są strata i dokładność modelu w kolejnych epokach, aby ocenić jego wydajność.
 
-## Uwagi
-- Dokładne dane i ich źródło nie są opisane.
-- Brak szczegółowych wniosków i analizy wyników.
+### Analiza Wyników
+Po treningu wydajność modelu jest oceniana na zbiorze testowym. Obliczana jest osiągnięta dokładność, a dokonywane są również pojedyncze predykcje na zbiorze testowym, aby ustalić, ile z nich było poprawnych.
+
+### Dołączone Pliki
+- `cancer.csv`: Zbiór danych zawierający informacje o pacjentach i etykietach diagnozy.
